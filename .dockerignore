@@ -1,0 +1,10 @@
+.git/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+.vscode/
+.idea/
