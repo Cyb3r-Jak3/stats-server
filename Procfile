@@ -1,1 +1,1 @@
-web: bin/stat_server
+web: ./bin/stat_server
