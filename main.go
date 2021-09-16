@@ -24,7 +24,7 @@ func main() {
 
 	r.HandleFunc("/report/404", common.AllowedMethod(report404, "POST"))
 	log.Info("Starting Server")
-	if err := http.ListenAndServe("127.0.0.1:5000", r); err != nil {
+	if err := http.ListenAndServe(":"+os.Getenv("PORT"), r); err != nil {
 		log.WithError(err).Fatal("Error when starting http server")
 	}
 }
