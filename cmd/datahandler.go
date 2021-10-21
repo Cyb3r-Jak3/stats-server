@@ -10,7 +10,7 @@ import (
 var DbURL string
 
 var tableStrings = []string{
-	"CREATE TABLE IF NOT EXISTS report404(URL text NOT NULL DEFAULT '', IP text NOT NULL DEFAULT '', Method text NOT NULL DEFAULT '', time integer);",
+	"CREATE TABLE IF NOT EXISTS report404(URL text NOT NULL DEFAULT '', IP text NOT NULL DEFAULT '', Method text NOT NULL DEFAULT '', time integer, host text NOT NULL DEFAULT '');",
 }
 
 func createTables() {
