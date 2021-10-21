@@ -14,6 +14,7 @@ type Report404 struct {
 	IP     string `json:"ip,omitempty"`
 	Method string `json:"method,omitempty"`
 	Time int `json:"time,omitempty"`
+	Host string `json:"host,omitempty"`
 }
 
 func report404(w http.ResponseWriter, req *http.Request) {
@@ -36,6 +37,6 @@ func report404(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	insert("INSERT INTO report404(url, ip, method, time) VALUES ($1, $2, $3, $4);", data.URL, data.IP, data.Method, data.Time)
+	insert("INSERT INTO report404(url, ip, method, time, host) VALUES ($1, $2, $3, $4, $5);", data.URL, data.IP, data.Method, data.Time, data.Host)
 	common.StringResponse(w, "Received")
 }
