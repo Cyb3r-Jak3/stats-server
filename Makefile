@@ -4,8 +4,8 @@ full-test: lint test
 
 
 lint:
-	go vet 
-	golint -set_exit_status 
+	go vet ./...
+	golint -set_exit_status ./...
 
 test:
 	go test -race -v -coverprofile="c.out" ./...

@@ -1,4 +1,5 @@
 .git/
+.github/
 *.exe
 *.exe~
 *.dll
@@ -8,3 +9,5 @@
 *.out
 .vscode/
 .idea/
+security.json
+security.sarif

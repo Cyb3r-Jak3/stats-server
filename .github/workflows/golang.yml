@@ -50,10 +50,10 @@ jobs:
     # - name: Benchmark
     #   run: make bench
 
-    # - name: Gosec Security Scanner
-    #   run: make scan
+     - name: Gosec Security Scanner
+       run: make scan
 
-    # - name: Upload SARIF file
-    #   uses: github/codeql-action/upload-sarif@v1
-    #   with:
-    #     sarif_file: security.sarif
+     - name: Upload SARIF file
+       uses: github/codeql-action/upload-sarif@v1
+       with:
+         sarif_file: security.sarif
