@@ -10,7 +10,7 @@ import (
 var DbURL string
 
 var tableStrings = []string{
-	"CREATE TABLE IF NOT EXISTS report404(URL text NOT NULL DEFAULT '', IP text NOT NULL DEFAULT '', Method text NOT NULL DEFAULT '');",
+	"CREATE TABLE IF NOT EXISTS report404(URL text NOT NULL DEFAULT '', IP text NOT NULL DEFAULT '', Method text NOT NULL DEFAULT '', time integer);",
 }
 
 func createTables() {
@@ -47,6 +47,15 @@ func insert(insertString string, sqlArgs ...interface{}) {
 	}
 }
 
-// func query() {
-
-// }
+//func query(querystring string, sqlArgs ...interface{}) (rows []*sql.Rows, err error) {
+//	db, err := sql.Open("postgres", DbURL)
+//	if err != nil {
+//		log.WithError(err).Error("Error opening database")
+//	}
+//	stmt, err := db.Prepare(querystring)
+//	if err != nil {
+//		log.WithError(err).Error("Error preparing statement")
+//	}
+//	rows= stmt.QueryRow(sqlArgs)
+//	return
+//}
