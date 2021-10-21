@@ -30,20 +30,25 @@ func insert(insertString string, sqlArgs ...interface{}) {
 	db, err := sql.Open("postgres", DbURL)
 	if err != nil {
 		log.WithError(err).Error("Error opening database")
+		return
 	}
 	stmt, err := db.Prepare(insertString)
 	if err != nil {
 		log.WithError(err).Error("Error preparing statement")
+		return
 	}
 	_, err = stmt.Exec(sqlArgs...)
 	if err != nil {
 		log.WithError(err).Error("Error executing stmt")
+		return
 	}
 	if err = stmt.Close(); err != nil {
 		log.WithError(err).Error("Error closing statement")
+		return
 	}
 	if err = db.Close(); err != nil {
 		log.WithError(err).Error("Error closing DB")
+		return
 	}
 }
 
