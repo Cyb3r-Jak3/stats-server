@@ -1,5 +1,6 @@
 module github.com/Cyb3r-Jak3/stats_server
 
+// +heroku goVersion 1.17
 go 1.17
 
 require (

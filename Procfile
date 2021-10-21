@@ -1,1 +1,1 @@
-web: ./bin/stats_server
+web: ./bin/cmd
