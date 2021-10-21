@@ -26,30 +26,32 @@ func createTables() {
 	}
 }
 
-func insert(insertString string, sqlArgs ...interface{}) {
+func insert(insertString string, sqlArgs ...interface{}) error {
 	db, err := sql.Open("postgres", DbURL)
 	if err != nil {
 		log.WithError(err).Error("Error opening database")
-		return
+		return err
 	}
 	stmt, err := db.Prepare(insertString)
 	if err != nil {
 		log.WithError(err).Error("Error preparing statement")
-		return
+		return err
 	}
+
 	_, err = stmt.Exec(sqlArgs...)
 	if err != nil {
 		log.WithError(err).Error("Error executing stmt")
-		return
+		return err
 	}
 	if err = stmt.Close(); err != nil {
 		log.WithError(err).Error("Error closing statement")
-		return
+		return err
 	}
 	if err = db.Close(); err != nil {
 		log.WithError(err).Error("Error closing DB")
-		return
+		return err
 	}
+	return nil
 }
 
 //func query(querystring string, sqlArgs ...interface{}) (rows []*sql.Rows, err error) {

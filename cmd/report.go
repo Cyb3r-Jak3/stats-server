@@ -37,6 +37,11 @@ func report404(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	insert("INSERT INTO report404(url, ip, method, time, host) VALUES ($1, $2, $3, $4, $5);", data.URL, data.IP, data.Method, data.Time, data.Host)
+	err = insert("INSERT INTO report404(url, ip, method, time, host) VALUES ($1, $2, $3, $4, $5);", data.URL, data.IP, data.Method, data.Time, data.Host)
+	if err != nil {
+		log.WithError(err).Error("Error inserting into database")
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 	common.StringResponse(w, "Received")
 }
