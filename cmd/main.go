@@ -16,7 +16,7 @@ var (
 )
 
 func init() {
-	DbURL = os.Getenv("DATABASE")
+	DbURL = os.Getenv("DATABASE_URL")
 	if DbURL == "" {
 		log.Fatal("There is not database URL configured")
 	}
